@@ -50,6 +50,7 @@ then
   then
       FEWEST_NUMBER_OF_GUESSES=$(($COUNT_GUESS + 1))
   fi 
-  TOLTAL_NUMBER_OF_GAMES=$(($TOLTAL_NUMBER_OF_GAMES + 1))
+  let "TOLTAL_NUMBER_OF_GAMES++"
+  echo -e "$TOLTAL_NUMBER_OF_GAMES"
   UPDATED_USER_RESULT=$($PSQL "UPDATE users SET toltal_number_of_games = $TOLTAL_NUMBER_OF_GAMES, fewest_number_of_guesses = $FEWEST_NUMBER_OF_GUESSES WHERE username = '$USERNAME_INPUT';")
 fi

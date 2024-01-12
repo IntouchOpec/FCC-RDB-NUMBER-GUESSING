@@ -2,3 +2,5 @@ CREATE DATABASE number_guess;
 CREATE TABLE users();
 ALTER TABLE users ADD COLUMN username VARCHAR(50) NOT NULL UNIQUE;
 ALTER TABLE users ADD COLUMN user_id SERIAL PRIMARY KEY NOT NULL;
+ALTER TABLE users ADD COLUMN toltal_number_of_games INT NOT NULL;
+AlTER TABLE users ADD COLUMN fewest_number_of_guesses INT;

@@ -48,9 +48,8 @@ then
   echo -e "You guessed it in $COUNT_GUESS tries. The secret number was $SECRET_NUMBER. Nice job!"
   if [[ $FEWEST_NUMBER_OF_GUESSES -lt $COUNT_GUESS ]]
   then
-      FEWEST_NUMBER_OF_GUESSES=$(($COUNT_GUESS + 1))
+      FEWEST_NUMBER_OF_GUESSES=$(($COUNT_GUESS))
   fi 
-  let "TOLTAL_NUMBER_OF_GAMES++"
-  echo -e "$TOLTAL_NUMBER_OF_GAMES"
+  TOLTAL_NUMBER_OF_GAMES=$(($TOLTAL_NUMBER_OF_GAMES + 1))
   UPDATED_USER_RESULT=$($PSQL "UPDATE users SET toltal_number_of_games = $TOLTAL_NUMBER_OF_GAMES, fewest_number_of_guesses = $FEWEST_NUMBER_OF_GUESSES WHERE username = '$USERNAME_INPUT';")
 fi

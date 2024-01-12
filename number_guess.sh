@@ -11,11 +11,14 @@ GUESS=$($PSQL "SELECT guess_id, username FROM guesses WHERE username = '$USERNAM
 function VAlIDATE_SECRET_NUMBER() {
   echo $1
   read SECRET_NUMBER
+  if  [[ ! "$SECRET_NUMBER" =~ ^[0-9]+$ ]]; 
+  then
+    VAlIDATE_SECRET_NUMBER "That is not an integer, guess again:"
+  fi
   if [ $SECRET_NUMBER -lt $MIN_GUESS_NUMBER ];
   then
     VAlIDATE_SECRET_NUMBER "It's lower than that, guess again:" 
   fi
-
   if [ $SECRET_NUMBER -gt $MAX_GUESS_NUMBER ];
   then 
     VAlIDATE_SECRET_NUMBER "It's higher than that, guess again:"

@@ -11,7 +11,7 @@ GUESS=$($PSQL "SELECT guess_id, username FROM guesses WHERE username = '$USERNAM
 if [[ -z $GUESS ]]
 then 
   echo -e "Welcome, $USERNAME_INPUT! It looks like this is your first time here."
-  echo -e "Guesss the secret number between 1 and 1000:"
+  echo -e "Guess the secret number between 1 and 1000:"
 else 
   echo -e "Welcom back, $USERNAME_INPUT! You have play $NUMBER_OF_GUESS games, and your best game took $BEST_GAME guesses"
 fi

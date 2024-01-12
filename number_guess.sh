@@ -8,10 +8,27 @@ PSQL="psql -X --username=freecodecamp --dbname=number_guess --tuples-only -c"
 
 GUESS=$($PSQL "SELECT guess_id, username FROM guesses WHERE username = '$USERNAME_INPUT'; ")
 
+function VAlIDATE_SECRET_NUMBER() {
+  echo $1
+  read SECRET_NUMBER
+  if [ $SECRET_NUMBER -lt $MIN_GUESS_NUMBER ];
+  then
+    VAlIDATE_SECRET_NUMBER "It's lower than that, guess again:" 
+  fi
+
+  if [ $SECRET_NUMBER -gt $MAX_GUESS_NUMBER ];
+  then 
+    VAlIDATE_SECRET_NUMBER "It's higher than that, guess again:"
+  fi
+  return $SECRET_NUMBER
+}
+
+
 if [[ -z $GUESS ]]
 then 
   echo -e "Welcome, $USERNAME_INPUT! It looks like this is your first time here."
-  echo -e "Guess the secret number between 1 and 1000:"
+  VAlIDATE_SECRET_NUMBER "Guess the secret number between 1 and 1000:"
+  echo $SECRET_NUMBER
 else 
   echo -e "Welcom back, $USERNAME_INPUT! You have play $NUMBER_OF_GUESS games, and your best game took $BEST_GAME guesses"
 fi

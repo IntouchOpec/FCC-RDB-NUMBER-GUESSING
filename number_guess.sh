@@ -45,6 +45,7 @@ echo "Guess the secret number between 1 and 1000:"
 GUESSING_GAME 
 if [ $SECRET_NUMBER -eq $GUESS_NUMBER_INPUT ];
 then
+  echo -e "You guessed it in $COUNT_GUESS tries. The secret number was $SECRET_NUMBER. Nice job!"
   if [[ $FEWEST_NUMBER_OF_GUESSES -lt $COUNT_GUESS ]]
   then
       FEWEST_NUMBER_OF_GUESSES=$(($COUNT_GUESS + 1))
